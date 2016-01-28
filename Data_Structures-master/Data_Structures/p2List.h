@@ -95,65 +95,6 @@ public:
 	}
 
 	// Data Management -----------------------------------------------------
-	//Remove duplicate values
-	void Unique(){
-		p2List<TYPE>* new_list(this);
-		node* tmp1 = new_list->start;
-		node* tmp = start;
-		TYPE data;
-		while (tmp1 != NULL){
-			data = tmp1->data;
-			tmp = start;
-			int position = 1;
-			int i = 0;
-			while (tmp != NULL){
-				int j = 0;
-				if (data == tmp->data && i <= 0){
-					i++;
-				}
-				else if (data == tmp->data && i >= 0){
-					tmp = tmp->nxt;
-					j++;
-					this->Remove(position);
-				}
-				if (j <= 0){
-					tmp = tmp->nxt;
-					position++;
-				}
-			}
-			tmp1 = tmp1->nxt;
-		}
-
-	}
-
-	//Change node from a list to another list
-	void Splice(int position_to_insert, int position_to_remove, p2List<TYPE>& list){
-		const node* tmp = NULL;
-
-		tmp = list.Remove(position_to_remove);
-		this->Insert(position_to_insert, tmp->data);
-
-	}
-
-	const p2List& Swap(){
-		node* tmp = start;
-		node* tmp1 = start;
-		while (tmp1->nxt){
-			tmp1 = tmp1->nxt;
-		}
-		TYPE save_data;
-		int i = 0;
-		while (i < this->size() / 2){
-			save_data = tmp1->data;
-			tmp1->data = tmp->data;
-			tmp->data = save_data;
-			tmp = tmp->nxt;
-			tmp1 = tmp1->prv;
-			i++;
-		}
-
-		return (*this);
-	}
 
 	node* push_back(const TYPE& data)
 	{
@@ -594,6 +535,131 @@ public:
 		return ret;
 	}
 
+	//PAU
+	//Remove duplicate values
+	void Unique(){
+		p2List<TYPE>* new_list(this);
+		node* tmp1 = new_list->start;
+		node* tmp = start;
+		TYPE data;
+		while (tmp1 != NULL){
+			data = tmp1->data;
+			tmp = start;
+			int position = 1;
+			int i = 0;
+			while (tmp != NULL){
+				int j = 0;
+				if (data == tmp->data && i <= 0){
+					i++;
+				}
+				else if (data == tmp->data && i >= 0){
+					tmp = tmp->nxt;
+					j++;
+					this->Remove(position);
+				}
+				if (j <= 0){
+					tmp = tmp->nxt;
+					position++;
+				}
+			}
+			tmp1 = tmp1->nxt;
+		}
+
+	}
+
+	//Change node from a list to another list
+	void Splice(int position_to_insert, int position_to_remove, p2List<TYPE>& list){
+		const node* tmp = NULL;
+
+		tmp = list.Remove(position_to_remove);
+		this->Insert(position_to_insert, tmp->data);
+
+	}
+
+	//Invert the data list
+	const p2List& Flip(){
+		node* tmp = start;
+		node* tmp1 = start;
+		while (tmp1->nxt){
+			tmp1 = tmp1->nxt;
+		}
+		TYPE save_data;
+		int i = 0;
+		while (i < this->size() / 2){
+			save_data = tmp1->data;
+			tmp1->data = tmp->data;
+			tmp->data = save_data;
+			tmp = tmp->nxt;
+			tmp1 = tmp1->prv;
+			i++;
+		}
+
+		return (*this);
+	}
+
+	//Swap de dos nodes
+	void Swap(node* first, node* last){
+		node* first_item = first;
+		node* last_item = last;
+		node* store_node;
+		node* tmp_1;
+
+		if (first_item->nxt == NULL && first_item->prv == NULL){
+			printf("No linked");
+		}
+		else if (last_item->nxt == NULL && last_item->prv == NULL){
+			printf("No linked");
+		}
+		else if (start == first_item && last->nxt == NULL){
+			store_node = last_item->prv;
+			tmp_1 = first_item->nxt;
+
+			start = last_item;
+			first_item->nxt = NULL;
+
+			last_item->nxt = tmp_1;
+			store_node->nxt = first_item;
+		}
+		else if (start == first_item && first_item->prv != NULL){
+			store_node = last_item->prv;
+			tmp_1 = first_item->nxt;
+
+			start = last_item;
+			first_item->nxt = last_item->nxt;
+
+			last_item->nxt = tmp_1;
+			store_node->nxt = first_item;
+
+		}
+		else if (last->nxt == NULL){
+			store_node = last_item->prv;
+			tmp_1 = first_item->prv;
+
+			last_item->nxt = first_item->nxt;
+			first_item->nxt = NULL;
+
+			store_node->nxt = first_item;
+			tmp_1->nxt = last_item;
+
+		}
+		else{
+			store_node = last_item->prv;
+			tmp_1 = first_item->nxt;
+
+			first_item->nxt = last_item->nxt;
+			last_item->nxt = tmp_1;
+
+			tmp_1 = first_item->prv;
+			tmp_1->nxt = last_item;
+			store_node->nxt = first_item;
+
+		}
+	}
+
+	//Assing new data to a node
+	void Assign(node* new_node, const TYPE& new_data){
+		new_node->data = new_data;
+	}
 };
 
 #endif /*__p2List_H__*/

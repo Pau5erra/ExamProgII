@@ -63,6 +63,30 @@ public:
 	}
 
 	// Data Management -----------------------------------------------------
+	//PAU treu els repetits del dyn
+	int remove_repeated(){
+
+		p2DynArray<TYPE>* new_dyn(this);
+
+		TYPE value;
+		int times = 0;
+
+		for (int i = 0; i < num_elements; i++){
+
+			value = data[i];
+			int take_count = 0;
+			for (int j = 0; j < num_elements; j++){
+				if (new_dyn->data[j] == value && take_count <= 0){
+					take_count++;
+				}
+				else if (new_dyn->data[j] == value && take_count >= 0){
+					erase(j);
+					times++;
+				}
+			}
+		}
+	}
+
 	void Fill(const TYPE& element){
 		for (int i = 0; i < capacity(); i++){
 			push_back(element);

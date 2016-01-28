@@ -10,6 +10,7 @@
 #include "p2String.h"
 #include "p2Graph.h"
 #include "p2Map.h"
+#include "mat3x3.h"
 
 #include <iostream>
 #include <map>
@@ -238,7 +239,18 @@ int main()
 
 	std::cout << "mymap now contains " << mymap.size() << " elements.\n";
 
+	iMat3x3 mat1 = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	iMat3x3 mat2 = { 10, 20, 30, 40, 50, 60, 70, 80, 90 };
+	//iMat3x3 mat3 = mat1 + mat2;
+	//TEST("2. p2Mat3x3::op+ and p2Mat3x3::op[]", false /*mat3[0] == 11 && mat3[8] == 99*/);
 
+	p2List<int> list;
+	p2List<int>::node* first = list.push_back(1);
+	list.push_back(2);
+	p2List<int>::node* last = list.push_back(3);
+	list.Swap(first, last);
+	TEST("3. p2SList::swap()", *(list.front()) == 3 && *(list.back()) == 1);
+	list.Assign(first, 4);
 
 	printf("\nFailures: %d/%d", failed, done);
 
