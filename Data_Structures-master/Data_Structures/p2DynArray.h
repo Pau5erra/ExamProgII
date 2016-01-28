@@ -63,35 +63,7 @@ public:
 	}
 
 	// Data Management -----------------------------------------------------
-	//PAU treu els repetits del dyn
-	int remove_repeated(){
-
-		p2DynArray<TYPE>* new_dyn(this);
-
-		TYPE value;
-		int times = 0;
-
-		for (int i = 0; i < num_elements; i++){
-
-			value = data[i];
-			int take_count = 0;
-			for (int j = 0; j < num_elements; j++){
-				if (new_dyn->data[j] == value && take_count <= 0){
-					take_count++;
-				}
-				else if (new_dyn->data[j] == value && take_count >= 0){
-					erase(j);
-					times++;
-				}
-			}
-		}
-	}
-
-	void Fill(const TYPE& element){
-		for (int i = 0; i < capacity(); i++){
-			push_back(element);
-		}
-	}
+	
 
 	void push_back(const TYPE& element)
 	{
@@ -352,6 +324,40 @@ private:
 
 		RELEASE_ARRAY(tmp);
 	}
+
+public:
+		//PAU 
+		//treu els repetits del dyn
+		int remove_repeated(){
+
+			p2DynArray<TYPE>* new_dyn(this);
+
+			TYPE value;
+			int times = 0;
+
+			for (int i = 0; i < num_elements; i++){
+
+				value = data[i];
+				int take_count = 0;
+				for (int j = 0; j < num_elements; j++){
+					if (new_dyn->data[j] == value && take_count <= 0){
+						take_count++;
+					}
+					else if (new_dyn->data[j] == value && take_count >= 0){
+						erase(j);
+						times++;
+					}
+				}
+			}
+		}
+
+		//Remove all the data of the Dyn and fill it with a number of elements.
+		void Fill(const TYPE& element){
+			this->clear();
+			for (int i = 0; i < capacity(); i++){
+				push_back(element);
+			}
+		}
 };
 
 #endif // __P2DYNARRAY_H__

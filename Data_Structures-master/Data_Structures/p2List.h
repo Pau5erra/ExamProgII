@@ -660,6 +660,21 @@ public:
 	void Assign(node* new_node, const TYPE& new_data){
 		new_node->data = new_data;
 	}
+
+	//Find a node given a value
+	const node* Find(const TYPE& value)
+	{
+		node* item = start;
+
+		while (item != nullptr)
+		{
+			if (item->data == value)
+				return (item);
+			item = item->nxt;
+		}
+
+		return nullptr;
+	}
 };
 
 #endif /*__p2List_H__*/

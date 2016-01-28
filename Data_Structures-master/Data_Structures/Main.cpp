@@ -252,6 +252,7 @@ int main()
 	TEST("3. p2SList::swap()", *(list.front()) == 3 && *(list.back()) == 1);
 	list.Assign(first, 4);
 
+
 	printf("\nFailures: %d/%d", failed, done);
 
 	getchar();
