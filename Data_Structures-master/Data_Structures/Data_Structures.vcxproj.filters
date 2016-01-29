@@ -50,6 +50,9 @@
     <ClInclude Include="mat3x3.h">
       <Filter>Containers</Filter>
     </ClInclude>
+    <ClInclude Include="p2Rectangle.h">
+      <Filter>Containers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">

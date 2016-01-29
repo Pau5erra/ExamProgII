@@ -576,7 +576,7 @@ public:
 
 	}
 
-	//Invert the data list
+	//Flip the data of the list
 	const p2List& Flip(){
 		node* tmp = start;
 		node* tmp1 = start;

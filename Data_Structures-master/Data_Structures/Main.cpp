@@ -11,6 +11,7 @@
 #include "p2Graph.h"
 #include "p2Map.h"
 #include "mat3x3.h"
+#include "p2Rectangle.h"
 
 #include <iostream>
 #include <map>
@@ -252,6 +253,14 @@ int main()
 	TEST("3. p2SList::swap()", *(list.front()) == 3 && *(list.back()) == 1);
 	list.Assign(first, 4);
 
+	//p2Rectangle-------------------------
+	printf("rectangle test");
+	p2Rectangle<int> r(10, 10, 40, 50);
+	p2Rectangle<int> r2(r);
+	TEST("r.position.x == 10", r.position.x == 10);
+	TEST("r2.position.y == 10)", r2.position.y == 10);
+	TEST("r2.GetArea() == 2000",r2.GetArea() == 2000);
+	TEST("r2.Intersects(r) == true",r2.Intersects(r) == true);
 
 	printf("\nFailures: %d/%d", failed, done);
 

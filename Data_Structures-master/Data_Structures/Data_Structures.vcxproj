@@ -77,6 +77,7 @@
     <ClInclude Include="p2String.h" />
     <ClInclude Include="p2Stack.h" />
     <ClInclude Include="p2Stack2.h" />
+    <ClInclude Include="p2Rectangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp" />
