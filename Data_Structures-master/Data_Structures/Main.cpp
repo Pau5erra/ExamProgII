@@ -53,12 +53,13 @@ int main()
 		container.push_back(1);
 		container.push_back(2);
 		container.push_back(3);
-	/*	for (int i = 1; i <= 10; i++){
+		/*
+		for (int i = 1; i <= 10; i++){
 			container.push_back(5);
 		}
 		container.Unique();
 		container1.Splice(1, 2, container);
-		*/
+	    */
 		TEST("Push Back", container.size() == 3);
 		TEST("Front", *(container.front()) == 1);
 		TEST("Back", *(container.back()) == 3);
@@ -86,6 +87,34 @@ int main()
 		container.pop_back(d);
 		container.pop_back(d);
 		TEST("Pop Back", d == 1 && container.pop_back(d) == false);
+		
+		
+		                //TEST DE LOS NUEVOS METODOS \\
+		
+		/*
+		//prueba del swap ------------------------------------------------------
+		p2SList<int> list;
+		p2SList<int>::node* first = list.push_back(1);
+		list.push_back(2);
+		p2SList<int>::node* last = list.push_back(3);
+		list.swap(first, last);
+		TEST("3. p2SList::swap()", *(list.front()) == 3 && *(list.back()) == 1);
+
+		//prueba del unique -----------------------------------------------------
+		p2SList<int> list1;
+		list1.push_back(1);
+		list1.push_back(2);
+		list1.push_back(1);
+		list1.push_back(2);
+		list1.push_back(3);
+		list1.push_back(4);
+		list1.unique();
+		TEST("Unique", list1.size() == 3);
+
+		//prueba del splice ---------------------------------------------------
+		list1.splice(1, 2, list1);
+	    */
+
 	}
 
 	// Queue List -------------------

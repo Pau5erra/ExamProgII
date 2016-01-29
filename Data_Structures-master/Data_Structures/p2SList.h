@@ -196,7 +196,7 @@ public:
 		{
 			node* prev = prev_node(item);
 
-			node<TYPE>* new_item = new node<TYPE>(data);
+			node* new_item = new node(data);
 			new_item->nxt = item;
 
 			if(prev != nullptr)
@@ -403,6 +403,120 @@ public:
 		}
 
 		return (last_item != nullptr) ? &(last_item->data) : nullptr;
+	}
+
+	//splice ----------------------------------------------------------
+
+	void splice(int insert_node, int position_to_remove, p2SList<TYPE> _list)
+	{
+		const  node* tmp = NULL;
+			
+		 
+		tmp = this->remove(position_to_remove);
+        this->insert(insert_node, tmp->data);
+	}
+
+	//Swap -------------------------------------------------------------
+
+	void swap(node* node1, node* node2)
+	{
+		if (node1->nxt != NULL)
+		{
+			node* tmp_nxt = node1->nxt;
+			node* tmp1_nxt = node2->nxt;
+			
+			node* tmp_prev = prev_node(node1);
+			node* tmp1_prev = prev_node(node2);
+
+			node1->nxt = tmp1_nxt;
+			node2->nxt = tmp_nxt;
+
+			if (tmp_prev != nullptr)
+				tmp_prev->nxt = node2;
+			else
+				start = node2;
+
+			if (tmp1_prev != nullptr)
+				tmp1_prev->nxt = node1;
+			else
+				start = node1;
+         }
+      }
+	
+	//remove ------------------------------------------------------------
+	
+	//remueve el elemento de la posicion indcada
+	node* remove(uint position)
+	{
+		node* tmp = start;
+
+		if (start == NULL)
+		{
+			return 0;
+		}
+		else
+		{
+			node* tmp1 = tmp;
+			node* tmp2;
+			
+			for (int count = 1; count < position; count++)
+			{
+				tmp1 = tmp;
+				tmp = tmp->nxt;
+			}
+			if (start->nxt == NULL)
+			{
+				start = NULL;
+			}
+			else
+			{
+				tmp2 = tmp;
+				tmp = tmp1;
+				tmp->nxt = tmp2->nxt;
+				delete tmp2;
+				return tmp;
+			}	
+		}
+	}
+	
+
+
+
+
+	//unique -------------------------------------------------------------
+
+	//remueve los elementos iguales
+	void unique()
+	{
+		p2SList<TYPE>* new_list(this);
+		node* tmp1 = new_list->start;
+		node* tmp = start;
+		TYPE data;
+		while (tmp1 != NULL){
+			data = tmp1->data;
+			tmp = start;
+			int position = 1;
+			int i = 0;
+			while (tmp != NULL){
+				int j = 0;
+				if (data == tmp->data && i <= 0){
+					i++;
+				}
+				else if (data == tmp->data && i >= 0){
+					tmp = tmp->nxt;
+					j++;
+					this->remove(position);
+				}
+				if (j <= 0){
+					tmp = tmp->nxt;
+					position++;
+				}
+			}
+			tmp1 = tmp1->nxt;
+			
+			
+		}
+
 	}
 
 	// Sort -------------------------------------------------------------
