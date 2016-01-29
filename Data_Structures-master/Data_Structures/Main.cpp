@@ -262,7 +262,127 @@ int main()
 	TEST("r2.GetArea() == 2000",r2.GetArea() == 2000);
 	TEST("r2.Intersects(r) == true",r2.Intersects(r) == true);
 
+	// Str functions (they are inside p2Defs.h) -----------------------------------------------------------------------------------------------------------------
+	// MyStrcmp------------------
+	char b[80] = "hello";
+	char c[90] = "hello";
+	char d[10] = "world";
+
+	TEST("2. my_strcmp", my_strcmp(b, c) == true);
+	TEST("2. my_strcmp", my_strcmp(b, d) == false);
+
+	// MyStrlen-----------------
+	char e[] = "hello world";
+
+	TEST("3. my_strlen", my_strlen(e) == 11);
+
+	// MyStrlen-----------------
+	char f[10] = "Test.";
+	char g[20] = "This is a test.";
+
+	my_strcpy(g, f);
+	
+	TEST("4. my_strcpy", my_strcmp(f, g) == true);
+
+	// MyStrchr-----------------
+	char h[] = "This is a sample string.";
+
+	TEST("5. my_strchr", my_strchr(h, 's') == 4);
+
+	// MyStrcspn----------------
+	char i[] = "Hi it's me 2anivia 7spaghetti and meatballs.";
+	char j[] = "123456789";
+
+	uint test = my_strcspn(i, j);
+	
+	TEST("5. my_strcspn", test == 12);
+
 	printf("\nFailures: %d/%d", failed, done);
+
+
+	// Alexis map tests --------------------------------------------------------------------------------------
+	//MAP TEST 1 ------------------------------------------------------------
+	printf("Aquí se testea lo de copiar el contenido en otro y una forma de hacer el empty:\n\n");
+	std::map<char, int> first1;
+
+	first1['a'] = 10;
+	first1['b'] = 20;
+	first1['c'] = 40;
+	first1['d'] = 50;
+
+	std::map<char, int> second = first1; //Second contains 4 ints now
+	first1 = std::map<char, int>(); //First is empty now
+
+	printf("First size: %i\n", first1.size());
+	printf("Second size: %i\n\n", second.size());
+	//std::map<char, int> second(first.begin(), first.end());
+	//std::map<char, int> third(second);
+
+	//MAP TEST 2 ------------------------------------------------------------
+	printf("Aquí se testea los métodos at, para ver el contenido de una key; el insert apra introducir algo al map y el size: \n\n");
+	std::map<char, int>::iterator it;
+	std::map<std::string, int> test_map =
+	{
+		{ "Alpha", 0 },
+		{ "Beta", 0 },
+		{ "Gamma", 0 }
+	};
+
+	test_map.at("Alpha") = 10;
+	test_map.at("Beta") = 20;
+	test_map.at("Gamma") = 30;
+
+	printf("Alpha: %i\n", test_map.at("Alpha"));
+	printf("test_map size: %i\n\n", test_map.size());
+
+	test_map.insert(std::pair<std::string, int>("Delta", 40));
+	printf("We insert another pair.\n");
+	printf("test_map size: %i\n\n", test_map.size());
+
+	//MAP TEST 3 ------------------------------------------------------------
+	printf("Aquí se testea el erase y el swap: \n\n");
+	std::map<char, int> map2;
+
+	map2['a'] = 1;
+	map2['b'] = 2;
+	map2['c'] = 3;
+	map2['d'] = 4;
+	map2['e'] = 5;
+
+	map2.erase('c');
+
+	//swap
+	std::map<char, int> map3;
+
+	map3['x'] = 10;
+	map3['y'] = 20;
+
+	map2.swap(map3); //a,b,c,d,e are now inside map3; x,y are now inside map2
+	map3.clear(); //Removes all elements from map3, size = 0
+	printf("Size of map3 one cleared: %i\n\n", map3.size());
+
+	//MAP TEST 4 ------------------------------------------------------------
+	printf("Aquí se testea el find, que es para mostra el contenido de las keys uniéndolo con el count para mirar si los elementos forman parte del map o no: \n\n");
+	std::map<char, int> map4;
+	char c1;
+
+	map4['a'] = 1;
+	map4['b'] = 2;
+	map4['c'] = 3;
+	map4['d'] = 4;
+	map4['e'] = 5;
+
+	printf("a => %i\n", map4.find('a')->second);
+	printf("b => %i\n", map4.find('b')->second);
+	printf("c => %i\n", map4.find('c')->second);
+	printf("d => %i\n", map4.find('d')->second);
+	printf("e => %i\n", map4.find('e')->second);
+
+	for (c1 = 'a'; c1 < 'h'; ++c1) //Recorre el abecedario hasta la H, los elementos que estén en esta franja dentro del map, sadrá como que pertenecen al map, los que no, dirá que no peretenecen
+		if (map4.count(c1) > 0)
+			printf("%c is an element of map4.\n", c1);
+		else
+			printf("%c is not an element of map4.\n", c1);
 
 	getchar();
 	return 0;
