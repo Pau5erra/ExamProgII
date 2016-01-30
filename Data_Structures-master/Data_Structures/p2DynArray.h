@@ -163,7 +163,21 @@ public:
 
 		return nullptr;
 	}
+	//flip de ro -------------------------------------------------------------
 
+	void Flip()
+	{
+		int j = num_elements - 1;
+		for (int i = 0; i <= num_elements / 2; i++)
+		{
+			if (j >= num_elements / 2)
+			{
+				SWAP(data[i], data[j]);
+				j--;
+			}
+		}
+	}
+    
 	void flip()
 	{
 		TYPE* start = &data[0];

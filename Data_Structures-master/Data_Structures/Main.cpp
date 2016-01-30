@@ -43,6 +43,21 @@ int main()
 		container.pop_back(d);
 		container.pop_back(d);
 		TEST("Pop Back", d == 1 && container.pop_back(d) == false);
+
+		// test flip de ro -----------------------------------------------
+		p2DynArray<int> container2;
+		container2.push_back(1);
+		container2.push_back(2);
+		container2.push_back(3);
+		container2.push_back(4);
+		container2.push_back(5);
+
+		container2.Flip();
+		TEST("12. Testing Flip DynArray", container2[0] == 5);
+		TEST("12. Testing Flip DynArray", container2[1] == 4);
+		TEST("12. Testing Flip DynArray", container2[2] == 3);
+		TEST("12. Testing Flip DynArray", container2[3] == 2);
+		TEST("12. Testing Flip DynArray", container2[4] == 1);
 	}
 
 	// List -------------------
@@ -91,7 +106,7 @@ int main()
 		
 		                //TEST DE LOS NUEVOS METODOS \\
 		
-		/*
+		/* parte sergio
 		//prueba del swap ------------------------------------------------------
 		p2SList<int> list;
 		p2SList<int>::node* first = list.push_back(1);
