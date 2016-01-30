@@ -52,7 +52,7 @@ public:
 	// Destructor ---------------------------------------------------------
 	~p2SList()
 	{
-		clear();
+		//clear();
 	}
 
 	// Operators ----------------------------------------------------------
@@ -407,13 +407,14 @@ public:
 
 	//splice ----------------------------------------------------------
 
-	void splice(int insert_node, int position_to_remove, p2SList<TYPE> _list)
+	//cambia un nodo de una lista a otra
+	void splice(int position_insert_node, int position_to_remove, p2SList<TYPE> _list)
 	{
 		const  node* tmp = NULL;
 			
 		 
 		tmp = this->remove(position_to_remove);
-        this->insert(insert_node, tmp->data);
+		this->insert(position_insert_node, tmp->data);
 	}
 
 	//Swap -------------------------------------------------------------
@@ -517,6 +518,30 @@ public:
 			
 		}
 
+	}
+
+	//change ------------------------------------------------------------
+
+	//mete los elementos del array dentro de la lista que le indicamos
+	p2SList change(p2SList<TYPE> new_list,p2DynArray<TYPE>& _dynarray)
+	{
+	
+	if (start == NULL)
+		{
+			
+			for (int i = 0; i < _dynarray.size(); i++)
+			{
+				new_list.push_back(_dynarray[i]);
+			}
+        }
+	   else
+	    { 
+            for (int i = 0; i < _dynarray.size(); i++)
+			{
+				new_list.push_back(_dynarray[i]);
+			}
+	   }
+	  return(*this);
 	}
 
 	// Sort -------------------------------------------------------------

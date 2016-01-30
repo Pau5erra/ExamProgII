@@ -106,14 +106,14 @@ int main()
 		
 		                //TEST DE LOS NUEVOS METODOS \\
 		
-		/* parte sergio
+		                     // parte sergio \\
 		//prueba del swap ------------------------------------------------------
 		p2SList<int> list;
 		p2SList<int>::node* first = list.push_back(1);
 		list.push_back(2);
 		p2SList<int>::node* last = list.push_back(3);
 		list.swap(first, last);
-		TEST("3. p2SList::swap()", *(list.front()) == 3 && *(list.back()) == 1);
+		TEST("swap", *(list.front()) == 3 && *(list.back()) == 1);
 
 		//prueba del unique -----------------------------------------------------
 		p2SList<int> list1;
@@ -124,11 +124,24 @@ int main()
 		list1.push_back(3);
 		list1.push_back(4);
 		list1.unique();
-		TEST("Unique", list1.size() == 3);
-
+		TEST("Unique", list1.size() == 4);
+		
 		//prueba del splice ---------------------------------------------------
-		list1.splice(1, 2, list1);
-	    */
+		list1.splice(1, 2, list);
+		TEST("splice", *(list1.at(1)) == 1);
+		
+		//prueba change -------------------------------------------------------
+		// ARRAY TO LIST ------------------------------------------------------
+		p2DynArray<int>_array(4);
+		_array.push_back(1);
+		_array.push_back(2);
+		_array.push_back(3);
+		
+		p2SList<int> prueba;
+		prueba.push_back(0);
+		prueba.change(prueba,_array);
+		TEST("change", prueba.size() == 4);
+		
 
 	}
 
