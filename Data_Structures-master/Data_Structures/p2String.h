@@ -206,6 +206,70 @@ public:
 		}
 		return(counter); //Devolvemos el número de vocales que tenía incialmente la cadena
 	}
+	//--------------------------------------------------------------------------------
+	uint trim() //Elimina los espacios y devuelve las veces que lo ha hecho
+	{
+		uint spaces = 0;
+		for (uint i = 0; str[i] != '\0'; ++i) //Iteramos la cadena y contamos los espacios que hay
+		{
+			if (str[i] == ' ')
+				++spaces;
+		}
+
+		for (uint i = 0; str[i] != '\0'; ++i) //Iteramos la cadena y borramos los espacios
+		{
+			if (str[i] == ' ')
+			{
+				for (uint j = i; str[j] != '\0'; ++j)
+					str[j] = str[j + 1];
+			}
+		}
+
+		return(spaces);
+	}
+	//--------------------------------------------------------------------------------
+	uint doubleSpace() //Hace doble espacio y devuelve el número de espacios inicial
+	{
+		uint spaces = 0;
+		for (uint i = 0; str[i] != '\0'; ++i) //Iteramos la cadena y contamos los espacios que hay
+		{
+			if (str[i] == ' ')
+				++spaces;
+		}
+
+		for (uint i = 0; str[i] != '\0'; ++i) //Volvemos a iterar la lista
+		{
+			if (str[i] == ' ') //Si se encuentra un espacio
+			{
+				for (uint j = length() + 1; i < j; --j) //Esto sirve para moverlo todo hacia la derecha mientras se duplican los espacios
+					str[j] = str[j - 1];
+				++i;
+			}
+		}
+
+		return(spaces); //Devolvemos el número de vocales que tenía incialmente la cadena
+	}
+	//--------------------------------------------------------------------------------
+	uint deleteCharacter(uint character) //Borra el caracter donat de la cadena
+	{
+		uint characters = 0;
+		for (uint i = 0; str[i] != '\0'; ++i) //Iteramos la cadena y vemos las veces que se repite el caracter
+		{
+			if (str[i] == character)
+				++characters;
+		}
+
+		for (uint i = 0; str[i] != '\0'; ++i) //Iteramos la cadena para borrarlos
+		{
+			if (str[i] == character)
+			{
+				for (uint j = i; str[j] != '\0'; ++j) //Se borran los caracteres
+					str[j] = str[j + 1];
+			}
+		}
+
+		return(characters); //Se retorna el número de caracteres que se han eliminado
+	}
 
 private:
 

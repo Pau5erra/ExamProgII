@@ -362,6 +362,30 @@ int main()
 	TEST("7. doubleVocals()", testing == 4);
 	TEST("7. doubleVocals()", s == "Hoolaa Muundoo");
 
+	// trim()-------------------
+	p2String s2("This is a sample string");
+
+	uint spaces = s2.trim();
+
+	TEST("8. trim()", spaces == 4);
+	TEST("8. trim()", s2 == "Thisisasamplestring");
+
+	// doubleSpace()------------
+	p2String s3("Hola Mundo");
+
+	uint spaces2 = s3.doubleSpace();
+
+	TEST("9. doubleSpace()", spaces2 == 1);
+	TEST("9. doubleSpace()", s3 == "Hola  Mundo");
+
+	// deleteCharacter()--------
+	p2String s4("Hola Mundo");
+
+	uint character = s4.deleteCharacter('o');
+
+	TEST("10. deleteCharacter()", character == 2);
+	TEST("10. deleteCharacter()", s4 == "Hla Mund");
+
 	printf("\nFailures: %d/%d\n", failed, done);
 
 	
