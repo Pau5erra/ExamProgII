@@ -354,7 +354,17 @@ int main()
 	
 	TEST("5. my_strcspn", test == 12);
 
-	printf("\nFailures: %d/%d", failed, done);
+	// DoubleVocals-------------
+	p2String s("Hola Mundo");
+
+	uint testing = s.doubleVocals();
+
+	TEST("7. doubleVocals()", testing == 4);
+	TEST("7. doubleVocals()", s == "Hoolaa Muundoo");
+
+	printf("\nFailures: %d/%d\n", failed, done);
+
+	
 
 
 	// Alexis map tests --------------------------------------------------------------------------------------

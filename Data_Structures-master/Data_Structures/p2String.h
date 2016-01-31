@@ -172,6 +172,40 @@ public:
 	{
 		return max_capacity;
 	}
+	//--------------------------------------------------------------------------------
+	uint doubleVocals()
+	{
+		uint counter = 0;
+		uint len = length();
+
+		for (uint i = 0; str[i] != '\0'; ++i) //Iteramos la lista
+		{
+			if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u') //Si en la posición en al que se encuentra hay una de las vocales, suma uno al counter
+			{
+				++counter;
+			}
+		}
+
+		uint needed_size = len + counter + 1; //Hacemos una varialbe con la cantidad de espacio que se necesita
+		if (needed_size > size()) //Si els espacio necesario es mayor que el actual de la cadena, se le ejecuta un Alloc para aumentar la capacidad
+		{
+			char* tmp = str;
+			Alloc(needed_size);
+			strcpy_s(str, size(), tmp);
+			delete tmp;
+		}
+
+		for (uint i = 0; str[i] != '\0'; ++i) //Volvemos a iterar la lista
+		{
+			if (str[i] == 'a' || str[i] == 'e' || str[i] == 'i' || str[i] == 'o' || str[i] == 'u') //Si se encuentra una vocal
+			{
+				for (uint j = length() + 1; i < j; --j) //Esto sirve para moverlo todo hacia la derecha mientras se duplican las vocales
+					str[j] = str[j - 1];
+				++i;
+			}
+		}
+		return(counter); //Devolvemos el número de vocales que tenía incialmente la cadena
+	}
 
 private:
 
