@@ -6,6 +6,7 @@
 #define __P2DYNARRAY_H__
 
 #include "p2Defs.h"
+//#include "p2SList.h"
 #include <assert.h>
 
 #define DYN_ARRAY_BLOCK_SIZE 16
@@ -163,6 +164,7 @@ public:
 
 		return nullptr;
 	}
+	
 	//flip de ro -------------------------------------------------------------
 
 	void Flip()
@@ -205,6 +207,35 @@ public:
 		}
 		return i;
 	}
+
+	//metodo ro prefix ---------------------------------------------------------------
+	
+	//le pasas una lista y te lo convierte en un dynarray
+	/*
+	void PrefixList(p2SList<TYPE>& list)
+	{
+		p2DynArray<TYPE> tmp;
+		for (int i = 0; i < num_elements; i++)
+		{
+			tmp.push_back(data[i]);
+		}
+
+		int space = list.size();
+		this->Alloc(mem_capacity + space);
+		this->clear();
+
+		p2SList<TYPE>::node* tmp2 = list.front_node();
+		for (int i = 0; i < space; i++)
+		{
+			this->push_back(tmp2->data);
+			tmp2 = tmp2->next();
+		}
+		for (int j = 0; j < tmp.num_elements; j++)
+		{
+			this->push_back(tmp.data[j]);
+		}
+	}   
+	*/
 
 	// Utils ------------------------------------------------------------
 	uint capacity() const
