@@ -52,7 +52,7 @@ public:
 	// Destructor ---------------------------------------------------------
 	~p2SList()
 	{
-		//clear();
+		clear();
 	}
 
 	// Operators ----------------------------------------------------------
@@ -523,7 +523,7 @@ public:
 	//change ------------------------------------------------------------
 
 	//mete los elementos del array dentro de la lista que le indicamos
-	p2SList change(p2SList<TYPE> new_list,p2DynArray<TYPE>& _dynarray)
+	void change(p2DynArray<TYPE>& _dynarray)
 	{
 	
 	if (start == NULL)
@@ -531,17 +531,17 @@ public:
 			
 			for (int i = 0; i < _dynarray.size(); i++)
 			{
-				new_list.push_back(_dynarray[i]);
+				this->push_back(_dynarray[i]);
 			}
         }
 	   else
 	    { 
             for (int i = 0; i < _dynarray.size(); i++)
 			{
-				new_list.push_back(_dynarray[i]);
+				this->push_back(_dynarray[i]);
 			}
 	   }
-	  return(*this);
+	 
 	}
 
 	// Sort -------------------------------------------------------------
