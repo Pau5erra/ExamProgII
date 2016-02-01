@@ -270,7 +270,46 @@ public:
 
 		return(characters); //Se retorna el número de caracteres que se han eliminado
 	}
-
+	//--------------------------------------------------------------------------------
+	/*
+	void swapWords() //Intercambia dos palabras "Hola Mundo" -> "Mundo Hola"
+	{
+		p2String* tmp = new p2String();
+		for (uint i = 0; str[i] != ' '; ++i)
+		{
+			tmp->str[i] = str[i];
+			if (str[i + 1] == ' ')
+			{
+				uint x = 0;
+				for (uint j = i; str[j] != '\0'; ++j)
+				{
+					str[x] = str[j + 1];
+					++x;
+				}	
+			}
+		}
+		my_strcat(str, tmp->str);
+	}
+	*/
+	//--------------------------------------------------------------------------------
+	/*
+	void cut(uint begin, uint end) //Corta una cadena dando el índice del principiio y el final del corte
+	{
+		p2String* tmp = new p2String(end);
+		for (uint i = 0; str[i] != '\0'; ++i)
+		{
+			if (str[i] == str[begin])
+			{
+				for (uint j = begin; j != end; ++j)
+				{
+					tmp->str[j] = str[j];
+				}
+			}
+		}
+		strcpy_s(str, size(), tmp->str);
+		delete tmp;
+	}
+	*/
 private:
 
 	void Alloc(unsigned int required_memory)

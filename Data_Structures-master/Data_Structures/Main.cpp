@@ -337,7 +337,7 @@ int main()
 	TEST("3. my_strlen", my_strlen(e) == 11);
 	
 	/*
-	// MyStrlen-----------------
+	// MyStrcpy-----------------
 	char f[10] = "Test.";
 	char g[20] = "This is a test.";
 
