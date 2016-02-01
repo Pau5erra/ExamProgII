@@ -191,7 +191,7 @@ public:
 		{
 			char* tmp = str;
 			Alloc(needed_size);
-			strcpy_s(str, size(), tmp);
+			strcpy_s(str, needed_size, tmp);
 			delete tmp;
 		}
 
@@ -235,6 +235,16 @@ public:
 		{
 			if (str[i] == ' ')
 				++spaces;
+		}
+
+		uint len = length();
+		uint needed_size = len + spaces + 1;
+		if (needed_size > size()) //Si els espacio necesario es mayor que el actual de la cadena, se le ejecuta un Alloc para aumentar la capacidad
+		{
+			char* tmp = str;
+			Alloc(needed_size);
+			strcpy_s(str, needed_size, tmp);
+			delete tmp;
 		}
 
 		for (uint i = 0; str[i] != '\0'; ++i) //Volvemos a iterar la lista

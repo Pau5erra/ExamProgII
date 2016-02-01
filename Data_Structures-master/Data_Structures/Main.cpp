@@ -336,15 +336,15 @@ int main()
 
 	TEST("3. my_strlen", my_strlen(e) == 11);
 	
-	/*
+	
 	// MyStrcpy-----------------
-	char f[10] = "Test.";
+	char f[20] = "Test.";
 	char g[20] = "This is a test.";
 
 	my_strcpy(g, f);
 	
 	TEST("4. my_strcpy", my_strcmp(f, g) == true);
-	*/
+	
 	
 	// MyStrchr-----------------
 	char h[] = "This is a sample string.";
@@ -359,7 +359,7 @@ int main()
 	
 	TEST("5. my_strcspn", test == 12);
 	
-	/*
+	
 	// DoubleVocals-------------
 	p2String s("Hola Mundo");
 
@@ -367,7 +367,7 @@ int main()
 
 	TEST("7. doubleVocals()", testing == 4);
 	TEST("7. doubleVocals()", s == "Hoolaa Muundoo");
-	*/
+	/**/
 	
 	// trim()-------------------
 	p2String s2("This is a sample string");
@@ -377,7 +377,7 @@ int main()
 	TEST("8. trim()", spaces == 4);
 	TEST("8. trim()", s2 == "Thisisasamplestring");
 
-	/*
+	
 	// doubleSpace()------------
 	p2String s3("Hola Mundo");
 
@@ -385,7 +385,7 @@ int main()
 
 	TEST("9. doubleSpace()", spaces2 == 1);
 	TEST("9. doubleSpace()", s3 == "Hola  Mundo");
-	*/
+
 
 	// deleteCharacter()--------
 	p2String s4("Hola Mundo");
