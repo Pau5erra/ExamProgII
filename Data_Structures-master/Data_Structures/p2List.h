@@ -675,6 +675,20 @@ public:
 
 		return nullptr;
 	}
+
+	//change ------------------------------------------------------------
+
+	//mete los elementos del array dentro de la lista que le indicamos
+	void change(const p2DynArray<TYPE>& _dynarray)
+	{
+
+		for (int i = 0; i < _dynarray.size(); i++)
+		{
+			this->push_back(_dynarray[i]);
+		}
+
+
+	}
 };
 
 #endif /*__p2List_H__*/

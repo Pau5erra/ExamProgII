@@ -484,6 +484,6 @@ int main()
 		else
 			printf("%c is not an element of map4.\n", c1);
 
-	getchar();
+
 	return 0;
 }
